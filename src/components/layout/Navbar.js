@@ -5,15 +5,17 @@ import SignedOutLinks from "./SignedOutLinks";
 
 const Navbar = () => {
   return (
-    <nav className='nav-wrapper blue draken-3'>
-      <div className='container'>
-        <Link to='/' className='brand-logo left'>
-          BlogPost
-        </Link>
-        <SignedInLinks />
-        <SignedOutLinks />
-      </div>
-    </nav>
+    <div className='navbar-fixed'>
+      <nav className='nav-wrapper blue  draken-3'>
+        <div className='container'>
+          <Link to='/' className='brand-logo left'>
+            BlogPost
+          </Link>
+          <SignedInLinks />
+          <SignedOutLinks />
+        </div>
+      </nav>
+    </div>
   );
 };
 export default Navbar;
