@@ -20,6 +20,14 @@ class Dashboard extends Component {
     );
   }
 }
+// In another way, use can use useSelector () in place of mapStateToProps()
+// const project = ()=>{
+//   const state = useSelector(state =>{
+//     return {
+//       projects: state.project.projects,
+//     }
+//   })
+// }
 
 const mapStateToProps = (state) => {
   return {
