@@ -17,8 +17,7 @@ class SignUp extends Component {
   };
   handleSubmit = (e) => {
     e.preventDefault();
-    this.props.signUp(this.props); //this.props represent the inital state(written above)
-    console.log(this.state);
+    this.props.signUp(this.state); //this.props represent the inital state(written above)
   };
   render() {
     const { authError, auth } = this.props;

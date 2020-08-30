@@ -22,7 +22,7 @@ const ProjectDetails = (props) => {
             <div>
               Posted by {project.authorFirstName} {project.authorLastname}
             </div>
-            <div>26 august, 2am</div>
+            <div>29 august, 2am</div>
           </div>
         </div>
       </div>
