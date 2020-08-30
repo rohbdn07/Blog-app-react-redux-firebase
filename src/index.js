@@ -9,26 +9,28 @@ import { Provider } from "react-redux";
 import thunk from "redux-thunk";
 import { reduxFirestore, getFirestore } from "redux-firestore";
 import { reactReduxFirebase, getFirebase } from "react-redux-firebase";
-
 import firebaseConfig from "./config/firebaseConfig";
 
 const store = createStore(
   rootReducer,
   compose(
     applyMiddleware(thunk.withExtraArgument({ getFirebase, getFirestore })), //with extrargument we can pass more parameter in thunk.
-    reactReduxFirebase(firebaseConfig), //redux binding for firebase
+    reactReduxFirebase(firebaseConfig, { attachAuthIsReady: true }), //redux binding for firebase
     reduxFirestore(firebaseConfig) //redux binding for firebase
   )
 );
 
-ReactDOM.render(
-  <React.StrictMode>
-    <Provider store={store}>
-      <App />
-    </Provider>
-  </React.StrictMode>,
-  document.getElementById("root")
-);
+// fireAuthIsReady is a method in Store. It waits until the firebase auth is being ready.
+store.firebaseAuthIsReady.then(() => {
+  ReactDOM.render(
+    <React.StrictMode>
+      <Provider store={store}>
+        <App />
+      </Provider>
+    </React.StrictMode>,
+    document.getElementById("root")
+  );
+});
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
