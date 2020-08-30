@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-
+import { connect } from "react-redux";
+import { signUp } from "../../store/actions/authActions";
 class SignUp extends Component {
   state = {
     firstName: "",
@@ -14,9 +15,11 @@ class SignUp extends Component {
   };
   handleSubmit = (e) => {
     e.preventDefault();
+    this.props.signUp(this.props); //this.props represent the inital state(written above)
     console.log(this.state);
   };
   render() {
+    const { authError } = this.props;
     return (
       <div>
         <div className='container '>
@@ -44,6 +47,9 @@ class SignUp extends Component {
             </div>
             <div className='input-field'>
               <button className='btn pink lighten-1 z-depth-0'>Sign Up</button>
+              <div className='red-text center'>
+                {authError ? <p>{authError}</p> : null}
+              </div>
             </div>
           </form>
         </div>
@@ -52,4 +58,17 @@ class SignUp extends Component {
   }
 }
 
-export default SignUp;
+const mapStateToProps = (state) => {
+  return {
+    auth: state.firebase.auth,
+    authError: state.auth.authError,
+  };
+};
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    signUp: (newUser) => dispatch(signUp(newUser)),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(SignUp);
