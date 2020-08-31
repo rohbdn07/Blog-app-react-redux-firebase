@@ -16,7 +16,7 @@ const Navbar = (props) => {
     <div className='navbar-fixed'>
       <nav className='nav-wrapper blue  draken-3'>
         <div className='container'>
-          <Link to='/' className='brand-logo left'>
+          <Link to='/' className='brand-logo left '>
             EventPost
           </Link>
           {links}

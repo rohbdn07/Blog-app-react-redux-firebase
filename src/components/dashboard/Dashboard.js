@@ -11,8 +11,8 @@ class Dashboard extends Component {
     const { projects, auth } = this.props;
     if (!auth.uid) return <Redirect to='/signin' />;
     return (
-      <div className='dashboard container'>
-        <div className='row'>
+      <div className='dashboard container '>
+        <div className='row '>
           <div className='col s12 m6'>
             <Projectlist projects={projects} />
           </div>
